@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#080008</color>
+    <color name="colorPrimaryDark">#000008</color>
+    <color name="colorAccent">#FF0000</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="bg">#F9F9FB</color>
+    <color name="hintTextColor">#804D505E</color>
+    <color name="instructionTextColor">#BF323A5D</color>
+    <color name="insertCodeTextColor">#323A5D</color>
+    <color name="loanHintTextColor">#7f8fa4</color>
+    <color name="gray_text">#8E8E93</color>
+    <color name="gray_text_df">#4D505E</color>
+    <color name="titleColor">#090F27</color>
+</resources>

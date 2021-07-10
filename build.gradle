@@ -1,0 +1,56 @@
+apply plugin: "java"
+apply plugin: 'kotlin'
+
+buildscript {
+    ext.kotlin_version = "1.4.21"
+    repositories {
+        google()
+        jcenter()
+
+        maven {
+            url 'https://plugins.gradle.org/m2/'
+        }
+
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:4.0.2"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+task cleanDefault(type: Delete) {
+    delete rootProject.buildDir
+}
+
+configurations {
+    ktlint
+}
+
+dependencies {
+    ktlint "com.pinterest:ktlint:0.34.2"
+}
+
+task ktlint(type: JavaExec, group: "verification") {
+    description = "Check Kotlin code style."
+    main = "com.pinterest.ktlint.Main"
+    classpath = configurations.ktlint
+    args "**/src/**/*.kt"
+}
+check.dependsOn ktlint
+
+task ktlintFormat(type: JavaExec, group: "formatting") {
+    description = "Fix Kotlin code style deviations."
+    main = "com.pinterest.ktlint.Main"
+    classpath = configurations.ktlint
+    args "-F", "**/src/**/*.kt"
+}
